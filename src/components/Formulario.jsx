@@ -1,6 +1,6 @@
 import SocialButton from "./SocialButton"
 import { useState } from 'react';
-import Alert from './Alert'; 
+import Alert from './Alert';
 import ButtonRegistro from "./ButtonRegistro";
 
 const Formulario = (props) => {
@@ -26,21 +26,21 @@ const Formulario = (props) => {
       return;
     }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    setAlertMessage('El correo electrónico no tiene un formato válido.');
-    setAlertType('error');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setAlertMessage('El correo electrónico no tiene un formato válido.');
+      setAlertType('error');
       return;
-  }
+    }
 
-  if (contrasena !== confirmacionContrasena) {
-    setAlertMessage('Las contraseñas no coinciden.');
-    setAlertType('error');
+    if (contrasena !== confirmacionContrasena) {
+      setAlertMessage('Las contraseñas no coinciden.');
+      setAlertType('error');
       return;
-  }
+    }
 
     // Si pasa todas las validaciones, se puede enviar el formulario
-    setAlertMessage('Validacion Exitosa');
-    setAlertType('success'); 
+    setAlertMessage('Registro Exitoso');
+    setAlertType('success');
     setNombre('');
     setEmail('');
     setContrasena('');
@@ -49,26 +49,26 @@ const Formulario = (props) => {
 
   return (
     <>
-      <form className="m-4" onSubmit={handleSubmit}>
+      <form className="m-4 form-group" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <input type="text" className="form-control" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+          <input type="text" className="form-control input-sm" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
         </div>
         <div className="mb-3">
-          <input type="email" className="form-control" placeholder="tuemail@ejemplo.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input type="email" className="form-control input-sm" placeholder="tuemail@ejemplo.com" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className="mb-3">
-          <input type="password" className="form-control" placeholder="contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
+          <input type="password" className="form-control input-sm" placeholder="contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
         </div>
         <div className="mb-3">
-          <input type="password" className="form-control" placeholder="confirmar contraseña" value={confirmacionContrasena} onChange={(e) => setConfirmacionContrasena(e.target.value)}/>
+          <input type="password" className="form-control input-sm" placeholder="confirmar contraseña" value={confirmacionContrasena} onChange={(e) => setConfirmacionContrasena(e.target.value)} />
         </div>
         <div className="d-grid">
-         <ButtonRegistro/>
+          <ButtonRegistro />
         </div>
         <div className="m-2">
-        <Alert message={alertMessage} type={alertType} />
+          <Alert message={alertMessage} type={alertType} />
         </div>
-        
+
       </form>
     </>
   )
