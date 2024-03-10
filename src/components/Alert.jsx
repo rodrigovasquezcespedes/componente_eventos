@@ -1,9 +1,10 @@
-const Alert = ({ message }) => {
-  return (
-    <div className="alert alert-danger" role="alert">
-      {message}
-    </div>
-  );
-}
+import React from 'react';
+import { Alert as BootstrapAlert } from 'react-bootstrap';
+
+const Alert = ({ message, variant }) => {
+    return (
+        <BootstrapAlert variant={variant}>{message}</BootstrapAlert>
+    );
+};
 
 export default Alert;

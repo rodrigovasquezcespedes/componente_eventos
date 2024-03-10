@@ -9,7 +9,31 @@ const Formulario = (props) => {
   const [confirmacionContrasena, setConfirmacionContrasena] = useState('');
   const [error, setError] = useState('');
 
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (nombre.trim() === '' || email.trim() === '' || contrasena.trim() === '' || confirmacionContrasena.trim() === '') {
+      setError('Todos los campos son requeridos.');
+      return;
+    }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('El correo electrónico no tiene un formato válido.');
+      return;
+  }
+
+  if (contrasena !== confirmacionContrasena) {
+      setError('Las contraseñas no coinciden.');
+      return;
+  }
+
+    // Si pasa todas las validaciones, se puede enviar el formulario
+    setError('Formulario enviado');
+    setNombre('');
+    setEmail('');
+    setContrasena('');
+    setConfirmacionContrasena('');
+  };
 
   return (
     <>
@@ -34,7 +58,10 @@ const Formulario = (props) => {
             Registrarse
           </button>
         </div>
-        {error && <Alert message={error} />}
+        <div className="m-2">
+        <Alert message={alertMessage} />
+        </div>
+        
       </form>
     </>
   )
