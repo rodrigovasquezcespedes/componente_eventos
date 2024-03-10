@@ -1,10 +1,16 @@
-import React from 'react';
-import { Alert as BootstrapAlert } from 'react-bootstrap';
+const Alert = ({ message, type }) => {
+  let alertClass = "alert";
 
-const Alert = ({ message, variant }) => {
-    return (
-        <BootstrapAlert variant={variant}>{message}</BootstrapAlert>
-    );
-};
+
+  if (type === "error") {
+    alertClass += " alert-danger";
+  } else if (type === "success") {
+    alertClass += " alert-success";
+  }
+
+  return (
+    <div className={alertClass}>{message}</div>
+  );
+}
 
 export default Alert;
